@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Finance Management - Add Vendor</title>
+
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+    <style>
+
+        body {
+            min-height: 100vh;
+            background: #f5f7fb;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background: #0d6efd;
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-weight: 700;
+        }
+
+        .page-container {
+            padding: 40px 20px;
+        }
+
+        .form-card {
+            max-width: 800px;
+            margin: auto;
+            border: none;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .page-title {
+            font-weight: 700;
+        }
+
+        .form-label {
+            font-weight: 600;
+        }
+
+        .form-control,
+        .form-select {
+            height: 48px;
+            border-radius: 9px;
+        }
+
+        textarea.form-control {
+            height: 100px;
+        }
+
+        .submit-btn {
+            height: 48px;
+            border-radius: 9px;
+            font-weight: 600;
+        }
+
+        .back-btn {
+            border-radius: 9px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="container">
+
+        <a
+                class="navbar-brand"
+                href="/dashboard">
+
+            ₹ Finance Management
+
+        </a>
+
+        <button
+                class="btn btn-light btn-sm"
+                onclick="goBack()">
+
+            Back to Dashboard
+
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- MAIN -->
+
+<div class="container page-container">
+
+
+    <div class="card form-card p-4 p-md-5">
+
+
+        <!-- HEADER -->
+
+        <div class="mb-4">
+
+            <h3 class="page-title mb-2">
+
+                Add Vendor
+
+            </h3>
+
+            <p class="text-muted mb-0">
+
+                Enter the vendor registration details below.
+
+            </p>
+
+        </div>
+
+
+        <!-- MESSAGE -->
+
+        <div
+                id="message"
+                class="alert d-none">
+        </div>
+
+
+        <!-- FORM -->
+
+        <form id="vendorForm">
+
+
+            <!-- PERSONAL DETAILS -->
+
+            <h5 class="mb-3">
+
+                Vendor Details
+
+            </h5>
+
+
+            <div class="row g-3">
+
+
+                <!-- Full Name -->
+
+                <div class="col-md-6">
+
+                    <label
+                            for="fullName"
+                            class="form-label">
+
+                        Full Name
+
+                    </label>
+
+                    <input
+                            type="text"
+                            id="fullName"
+                            class="form-control"
+                            placeholder="Enter full name"
+                            required>
+
+                </div>
+
+
+                <!-- Email -->
+
+                <div class="col-md-6">
+
+                    <label
+                            for="email"
+                            class="form-label">
+
+                        Email Address
+
+                    </label>
+
+                    <input
+                            type="email"
+                            id="email"
+                            class="form-control"
+                            placeholder="Enter email"
+                            required>
+
+                </div>
+
+
+                <!-- Phone -->
+
+                <div class="col-md-6">
+
+                    <label
+                            for="phone"
+                            class="form-label">
+
+                        Phone Number
+
+                    </label>
+
+                    <input
+                            type="tel"
+                            id="phone"
+                            class="form-control"
+                            maxlength="10"
+                            placeholder="Enter phone number"
+                            required>
+
+                </div>
+
+
+                <!-- Business Name -->
+
+                <div class="col-md-6">
+
+                    <label
+                            for="businessName"
+                            class="form-label">
+
+                        Business Name
+
+                    </label>
+
+                    <input
+                            type="text"
+                            id="businessName"
+                            class="form-control"
+                            placeholder="Enter business name"
+                            required>
+
+                </div>
+
+
+                <!-- Vendor Type -->
+
+                <div class="col-md-6">
+
+                    <label
+                            for="vendorType"
+                            class="form-label">
+
+                        Vendor Type
+
+                    </label>
+
+                    <select
+                            id="vendorType"
+                            class="form-select"
+                            required>
+
+                        <option value="">
+                            Select vendor type
+                        </option>
+
+                        <option value="SUPPLIER">
+                            Supplier
+                        </option>
+
+                        <option value="SERVICE_PROVIDER">
+                            Service Provider
+                        </option>
+
+                        <option value="CONTRACTOR">
+                            Contractor
+                        </option>
+
+                        <option value="OTHER">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- GST -->
+
+                <div class="col-md-6">
+
+                    <label
+                            for="gstNumber"
+                            class="form-label">
+
+                        GST Number
+
+                    </label>
+
+                    <input
+                            type="text"
+                            id="gstNumber"
+                            class="form-control"
+                            placeholder="Enter GST number">
+
+                </div>
+
+
+                <!-- PAN -->
+
+                <div class="col-md-6">
+
+                    <label
+                            for="panNumber"
+                            class="form-label">
+
+                        PAN Number
+
+                    </label>
+
+                    <input
+                            type="text"
+                            id="panNumber"
+                            class="form-control"
+                            placeholder="Enter PAN number">
+
+                </div>
+
+
+                <!-- Address -->
+
+                <div class="col-12">
+
+                    <label
+                            for="address"
+                            class="form-label">
+
+                        Address
+
+                    </label>
+
+                    <textarea
+                            id="address"
+                            class="form-control"
+                            placeholder="Enter vendor address"
+                            required></textarea>
+
+                </div>
+
+
+                <!-- City -->
+
+                <div class="col-md-4">
+
+                    <label
+                            for="city"
+                            class="form-label">
+
+                        City
+
+                    </label>
+
+                    <input
+                            type="text"
+                            id="city"
+                            class="form-control"
+                            placeholder="City"
+                            required>
+
+                </div>
+
+
+                <!-- State -->
+
+                <div class="col-md-4">
+
+                    <label
+                            for="state"
+                            class="form-label">
+
+                        State
+
+                    </label>
+
+                    <input
+                            type="text"
+                            id="state"
+                            class="form-control"
+                            placeholder="State"
+                            required>
+
+                </div>
+
+
+                <!-- Pincode -->
+
+                <div class="col-md-4">
+
+                    <label
+                            for="pincode"
+                            class="form-label">
+
+                        Pincode
+
+                    </label>
+
+                    <input
+                            type="text"
+                            id="pincode"
+                            class="form-control"
+                            maxlength="6"
+                            placeholder="Pincode"
+                            required>
+
+                </div>
+
+
+            </div>
+
+
+            <hr class="my-4">
+
+
+            <!-- BUTTONS -->
+
+            <div class="d-flex gap-2 justify-content-end">
+
+
+                <button
+                        type="button"
+                        class="btn btn-outline-secondary back-btn"
+                        onclick="goBack()">
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                        type="submit"
+                        id="submitButton"
+                        class="btn btn-primary submit-btn">
+
+                    Add Vendor
+
+                </button>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+    /*
+     * Check that user is logged in.
+     */
+
+    const token =
+        sessionStorage.getItem("token");
+
+    const role =
+        (sessionStorage.getItem("userRole") || "")
+            .trim()
+            .toUpperCase();
+
+
+    /*
+     * Only ADMIN can access this page.
+     */
+
+    if (!token) {
+
+        window.location.href = "/login";
+
+    }
+
+
+    if (role !== "ADMIN") {
+
+        window.location.href = "/dashboard";
+
+    }
+
+
+    /*
+     * Phone and pincode:
+     * numbers only.
+     */
+
+    document
+        .getElementById("phone")
+        .addEventListener("input", function () {
+
+            this.value =
+                this.value
+                    .replace(/\D/g, "")
+                    .substring(0, 10);
+
+        });
+
+
+    document
+        .getElementById("pincode")
+        .addEventListener("input", function () {
+
+            this.value =
+                this.value
+                    .replace(/\D/g, "")
+                    .substring(0, 6);
+
+        });
+
+
+    /*
+     * GST / PAN uppercase.
+     */
+
+    document
+        .getElementById("gstNumber")
+        .addEventListener("input", function () {
+
+            this.value =
+                this.value.toUpperCase();
+
+        });
+
+
+    document
+        .getElementById("panNumber")
+        .addEventListener("input", function () {
+
+            this.value =
+                this.value.toUpperCase();
+
+        });
+
+
+    /*
+     * Submit vendor form.
+     *
+     * Backend API can be connected here.
+     */
+
+    document
+        .getElementById("vendorForm")
+        .addEventListener("submit", async function (event) {
+
+            event.preventDefault();
+
+
+            const message =
+                document.getElementById("message");
+
+            const submitButton =
+                document.getElementById("submitButton");
+
+
+            message.classList.add("d-none");
+
+
+            const vendorData = {
+
+                fullName:
+                    document.getElementById("fullName").value.trim(),
+
+                email:
+                    document.getElementById("email").value.trim(),
+
+                phone:
+                    document.getElementById("phone").value.trim(),
+
+                businessName:
+                    document.getElementById("businessName").value.trim(),
+
+                vendorType:
+                document.getElementById("vendorType").value,
+
+                gstNumber:
+                    document.getElementById("gstNumber").value.trim(),
+
+                panNumber:
+                    document.getElementById("panNumber").value.trim(),
+
+                address:
+                    document.getElementById("address").value.trim(),
+
+                city:
+                    document.getElementById("city").value.trim(),
+
+                state:
+                    document.getElementById("state").value.trim(),
+
+                pincode:
+                    document.getElementById("pincode").value.trim()
+
+            };
+
+
+            /*
+             * Basic validation.
+             */
+
+            if (vendorData.phone.length !== 10) {
+
+                showMessage(
+                    "Please enter a valid 10-digit phone number.",
+                    "danger"
+                );
+
+                return;
+
+            }
+
+
+            if (vendorData.pincode.length !== 6) {
+
+                showMessage(
+                    "Please enter a valid 6-digit pincode.",
+                    "danger"
+                );
+
+                return;
+
+            }
+
+
+            /*
+             * Disable button.
+             */
+
+            submitButton.disabled = true;
+
+            submitButton.textContent =
+                "Saving...";
+
+
+            try {
+
+
+                /*
+                 * IMPORTANT:
+                 *
+                 * Change /api/vendors to the
+                 * actual backend endpoint later.
+                 */
+
+                const response =
+                    await fetch("/api/vendors", {
+
+                        method: "POST",
+
+                        headers: {
+
+                            "Content-Type":
+                                "application/json",
+
+                            "Authorization":
+                                "Bearer " + token
+
+                        },
+
+                        body:
+                            JSON.stringify(vendorData)
+
+                    });
+
+
+                /*
+                 * Backend may return JSON
+                 * or plain text.
+                 */
+
+                const contentType =
+                    response.headers
+                        .get("content-type") || "";
+
+
+                let data;
+
+
+                if (contentType.includes("application/json")) {
+
+                    data =
+                        await response.json();
+
+                } else {
+
+                    data =
+                        await response.text();
+
+                }
+
+
+                if (!response.ok) {
+
+                    let errorText =
+                        "Unable to add vendor.";
+
+                    if (typeof data === "string") {
+
+                        errorText = data;
+
+                    }
+                    else if (data && data.message) {
+
+                        errorText =
+                            data.message;
+
+                    }
+
+                    throw new Error(errorText);
+
+                }
+
+
+                /*
+                 * Success
+                 */
+
+                showMessage(
+                    "Vendor added successfully.",
+                    "success"
+                );
+
+
+                /*
+                 * Clear form.
+                 */
+
+                document
+                    .getElementById("vendorForm")
+                    .reset();
+
+
+            }
+            catch (error) {
+
+                showMessage(
+                    error.message ||
+                    "Something went wrong.",
+                    "danger"
+                );
+
+            }
+            finally {
+
+                submitButton.disabled = false;
+
+                submitButton.textContent =
+                    "Add Vendor";
+
+            }
+
+        });
+
+
+    /*
+     * Show message.
+     */
+
+    function showMessage(text, type) {
+
+        const message =
+            document.getElementById("message");
+
+        message.textContent = text;
+
+        message.className =
+            "alert alert-" + type;
+
+        message.classList.remove("d-none");
+
+    }
+
+
+    /*
+     * Back to dashboard.
+     */
+
+    function goBack() {
+
+        window.location.href =
+            "/dashboard";
+
+    }
+
+</script>
+
+
+</body>
+
+</html>
+

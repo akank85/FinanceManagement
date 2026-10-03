@@ -1,0 +1,990 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Finance Management - Registration</title>
+
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+
+    <style>
+
+        body {
+            min-height: 100vh;
+            background: #f5f7fb;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background: #0d6efd;
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-weight: 700;
+        }
+
+        .page-container {
+            padding: 40px 20px;
+        }
+
+        .registration-card {
+            max-width: 900px;
+            margin: auto;
+            border: none;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .page-title {
+            font-weight: 700;
+        }
+
+        .section-title {
+            font-weight: 700;
+            color: #343a40;
+        }
+
+        .form-label {
+            font-weight: 600;
+        }
+
+        .form-control,
+        .form-select {
+            height: 48px;
+            border-radius: 9px;
+        }
+
+        textarea.form-control {
+            height: 100px;
+        }
+
+        .status-badge {
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+
+        .detail-box {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .detail-label {
+            color: #6c757d;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .detail-value {
+            font-weight: 600;
+            color: #212529;
+        }
+
+        .action-btn {
+            border-radius: 9px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="container">
+
+        <a
+                class="navbar-brand"
+                href="/dashboard">
+
+            ₹ Finance Management
+
+        </a>
+
+
+        <button
+                class="btn btn-light btn-sm"
+                onclick="goBack()">
+
+            Dashboard
+
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= MAIN ================= -->
+
+<div class="container page-container">
+
+
+    <div class="card registration-card p-4 p-md-5">
+
+
+        <!-- HEADER -->
+
+        <div class="d-flex
+                    justify-content-between
+                    align-items-center
+                    flex-wrap
+                    mb-4">
+
+            <div>
+
+                <h3 class="page-title mb-2">
+
+                    Registration Details
+
+                </h3>
+
+                <p class="text-muted mb-0">
+
+                    View your vendor registration information.
+
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <span
+                        id="statusBadge"
+                        class="badge bg-secondary status-badge">
+
+                    Loading...
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- MESSAGE -->
+
+        <div
+                id="message"
+                class="alert d-none">
+        </div>
+
+
+        <!-- ================= DETAILS ================= -->
+
+        <div id="registrationDetails">
+
+
+            <!-- Vendor Details -->
+
+            <h5 class="section-title mb-3">
+
+                Vendor Information
+
+            </h5>
+
+
+            <div class="row g-3 mb-4">
+
+
+                <div class="col-md-6">
+
+                    <div class="detail-box">
+
+                        <div class="detail-label">
+                            Full Name
+                        </div>
+
+                        <div
+                                id="fullName"
+                                class="detail-value">
+
+                            -
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="detail-box">
+
+                        <div class="detail-label">
+                            Email
+                        </div>
+
+                        <div
+                                id="email"
+                                class="detail-value">
+
+                            -
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="detail-box">
+
+                        <div class="detail-label">
+                            Phone Number
+                        </div>
+
+                        <div
+                                id="phone"
+                                class="detail-value">
+
+                            -
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="detail-box">
+
+                        <div class="detail-label">
+                            Business Name
+                        </div>
+
+                        <div
+                                id="businessName"
+                                class="detail-value">
+
+                            -
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="detail-box">
+
+                        <div class="detail-label">
+                            Vendor Type
+                        </div>
+
+                        <div
+                                id="vendorType"
+                                class="detail-value">
+
+                            -
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="detail-box">
+
+                        <div class="detail-label">
+                            GST Number
+                        </div>
+
+                        <div
+                                id="gstNumber"
+                                class="detail-value">
+
+                            -
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="detail-box">
+
+                        <div class="detail-label">
+                            PAN Number
+                        </div>
+
+                        <div
+                                id="panNumber"
+                                class="detail-value">
+
+                            -
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <hr class="my-4">
+
+
+            <!-- Address -->
+
+            <h5 class="section-title mb-3">
+
+                Address
+
+            </h5>
+
+
+            <div class="row g-3 mb-4">
+
+
+                <div class="col-12">
+
+                    <div class="detail-box">
+
+                        <div class="detail-label">
+                            Address
+                        </div>
+
+                        <div
+                                id="address"
+                                class="detail-value">
+
+                            -
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="detail-box">
+
+                        <div class="detail-label">
+                            City
+                        </div>
+
+                        <div
+                                id="city"
+                                class="detail-value">
+
+                            -
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="detail-box">
+
+                        <div class="detail-label">
+                            State
+                        </div>
+
+                        <div
+                                id="state"
+                                class="detail-value">
+
+                            -
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="detail-box">
+
+                        <div class="detail-label">
+                            Pincode
+                        </div>
+
+                        <div
+                                id="pincode"
+                                class="detail-value">
+
+                            -
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <hr class="my-4">
+
+
+            <!-- Registration Status -->
+
+            <h5 class="section-title mb-3">
+
+                Registration Status
+
+            </h5>
+
+
+            <div class="detail-box mb-4">
+
+                <div class="row">
+
+
+                    <div class="col-md-6">
+
+                        <div class="detail-label">
+                            Registration ID
+                        </div>
+
+                        <div
+                                id="registrationId"
+                                class="detail-value">
+
+                            -
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="detail-label">
+                            Registration Date
+                        </div>
+
+                        <div
+                                id="registrationDate"
+                                class="detail-value">
+
+                            -
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ================= BUTTONS ================= -->
+
+        <div class="d-flex
+                    justify-content-end
+                    gap-2">
+
+
+            <button
+                    type="button"
+                    class="btn btn-outline-secondary action-btn"
+                    onclick="goBack()">
+
+                Back
+
+            </button>
+
+
+            <button
+                    type="button"
+                    class="btn btn-primary action-btn"
+                    onclick="refreshRegistration()">
+
+                Refresh
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+    /*
+     * ============================
+     * LOGIN CHECK
+     * ============================
+     */
+
+    const token =
+        sessionStorage.getItem("token");
+
+
+    const role =
+        (sessionStorage.getItem("userRole") || "")
+            .trim()
+            .toUpperCase();
+
+
+    const userEmail =
+        sessionStorage.getItem("userEmail");
+
+
+    /*
+     * User must be logged in.
+     */
+
+    if (!token) {
+
+        window.location.href =
+            "/login";
+
+    }
+
+
+    /*
+     * Only VENDOR can access
+     * this page.
+     */
+
+    if (role !== "VENDOR") {
+
+        window.location.href =
+            "/dashboard";
+
+    }
+
+
+    /*
+     * ============================
+     * LOAD REGISTRATION
+     * ============================
+     */
+
+    async function loadRegistration() {
+
+        const message =
+            document.getElementById("message");
+
+
+        try {
+
+
+            /*
+             * IMPORTANT:
+             *
+             * This is a placeholder API.
+             *
+             * Change it when backend
+             * endpoint is finalized.
+             */
+
+            const response =
+                await fetch(
+                    "/api/vendors/registration?email="
+                    + encodeURIComponent(userEmail),
+                    {
+
+                        method: "GET",
+
+                        headers: {
+
+                            "Authorization":
+                                "Bearer " + token
+
+                        }
+
+                    }
+                );
+
+
+            /*
+             * Read response.
+             */
+
+            const contentType =
+                response.headers
+                    .get("content-type") || "";
+
+
+            let data;
+
+
+            if (
+                contentType
+                    .includes("application/json")
+            ) {
+
+                data =
+                    await response.json();
+
+            }
+            else {
+
+                data =
+                    await response.text();
+
+            }
+
+
+            /*
+             * Error response.
+             */
+
+            if (!response.ok) {
+
+                let errorMessage =
+                    "Unable to load registration details.";
+
+
+                if (typeof data === "string") {
+
+                    errorMessage =
+                        data;
+
+                }
+                else if (
+                    data &&
+                    data.message
+                ) {
+
+                    errorMessage =
+                        data.message;
+
+                }
+
+
+                throw new Error(
+                    errorMessage
+                );
+
+            }
+
+
+            /*
+             * Fill details.
+             */
+
+            setValue(
+                "fullName",
+                data.fullName
+            );
+
+            setValue(
+                "email",
+                data.email
+            );
+
+            setValue(
+                "phone",
+                data.phone
+            );
+
+            setValue(
+                "businessName",
+                data.businessName
+            );
+
+            setValue(
+                "vendorType",
+                data.vendorType
+            );
+
+            setValue(
+                "gstNumber",
+                data.gstNumber
+            );
+
+            setValue(
+                "panNumber",
+                data.panNumber
+            );
+
+            setValue(
+                "address",
+                data.address
+            );
+
+            setValue(
+                "city",
+                data.city
+            );
+
+            setValue(
+                "state",
+                data.state
+            );
+
+            setValue(
+                "pincode",
+                data.pincode
+            );
+
+            setValue(
+                "registrationId",
+                data.registrationId
+            );
+
+            setValue(
+                "registrationDate",
+                data.registrationDate
+            );
+
+
+            /*
+             * Registration status.
+             */
+
+            updateStatus(
+                data.status
+            );
+
+
+        }
+        catch (error) {
+
+
+            /*
+             * If backend API is not
+             * created yet, show message.
+             */
+
+            showMessage(
+                error.message ||
+                "Registration details could not be loaded.",
+                "danger"
+            );
+
+
+            updateStatus(
+                "NOT AVAILABLE"
+            );
+
+        }
+
+    }
+
+
+    /*
+     * ============================
+     * SET VALUE
+     * ============================
+     */
+
+    function setValue(
+        elementId,
+        value
+    ) {
+
+        document
+            .getElementById(elementId)
+            .textContent =
+            value ||
+            "-";
+
+    }
+
+
+    /*
+     * ============================
+     * STATUS
+     * ============================
+     */
+
+    function updateStatus(status) {
+
+        const badge =
+            document.getElementById(
+                "statusBadge"
+            );
+
+
+        const currentStatus =
+            (status || "PENDING")
+                .toString()
+                .toUpperCase();
+
+
+        badge.textContent =
+            currentStatus;
+
+
+        /*
+         * Bootstrap badge colors.
+         */
+
+        badge.className =
+            "badge status-badge";
+
+
+        if (
+            currentStatus ===
+            "APPROVED"
+        ) {
+
+            badge.classList.add(
+                "bg-success"
+            );
+
+        }
+        else if (
+            currentStatus ===
+            "REJECTED"
+        ) {
+
+            badge.classList.add(
+                "bg-danger"
+            );
+
+        }
+        else if (
+            currentStatus ===
+            "PENDING"
+        ) {
+
+            badge.classList.add(
+                "bg-warning",
+                "text-dark"
+            );
+
+        }
+        else {
+
+            badge.classList.add(
+                "bg-secondary"
+            );
+
+        }
+
+    }
+
+
+    /*
+     * ============================
+     * MESSAGE
+     * ============================
+     */
+
+    function showMessage(
+        text,
+        type
+    ) {
+
+        const message =
+            document.getElementById(
+                "message"
+            );
+
+
+        message.textContent =
+            text;
+
+
+        message.className =
+            "alert alert-" + type;
+
+
+        message.classList.remove(
+            "d-none"
+        );
+
+    }
+
+
+    /*
+     * ============================
+     * REFRESH
+     * ============================
+     */
+
+    function refreshRegistration() {
+
+        const message =
+            document.getElementById(
+                "message"
+            );
+
+
+        message.classList.add(
+            "d-none"
+        );
+
+
+        loadRegistration();
+
+    }
+
+
+    /*
+     * ============================
+     * BACK
+     * ============================
+     */
+
+    function goBack() {
+
+        window.location.href =
+            "/dashboard";
+
+    }
+
+
+    /*
+     * Load page.
+     */
+
+    loadRegistration();
+
+
+</script>
+
+
+</body>
+
+</html>
+```
